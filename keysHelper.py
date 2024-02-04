@@ -1,4 +1,4 @@
-cashtags = 'your, multiple,'$Parzobul, $UncleThoth'
+cashtags = 'your, multiple,'$Parzobul,$UncleThoth'
 cashtags = cashtags.split(",")
 BEARER_TOKENS = ''
 CONSUMER_KEYS= ''
