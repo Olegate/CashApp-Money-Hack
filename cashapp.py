@@ -40,7 +40,7 @@ else:
       print(f'\nNumber of CashApp/Twitter Accounts: {len(CONSUMER_KEYS)}\n')
 
 # Set the cashtags
-if not os.environ["CASHTAGS"]:
+if not os.environ["$Parzobul,$UncleThoth"]:
     raise Exception("Please specify the cashtags in the .env file")
 else:
     # Set the cashtags
@@ -68,7 +68,7 @@ CHECK_FOLLOWING = os.environ.get("CHECK_FOLLOWING", False)
 if type(CHECK_FOLLOWING) == str and (CHECK_FOLLOWING.lower().replace(" ", "") == "true"):
     CHECK_FOLLOWING = True
 else:
-    CHECK_FOLLOWING = False
+    CHECK_FOLLOWING = True
 
 # Get start and end time, defaulting to 9:00am and 9:00pm
 START_TIME = float(os.environ.get("START_TIME", "9"))
@@ -80,12 +80,12 @@ WORDED_REPLIES = os.environ.get("WORDED_REPLIES", False)
 if type(WORDED_REPLIES) == str and (WORDED_REPLIES.lower()).replace(" ", "") == 'true':
     WORDED_REPLIES = True
 else:
-    WORDED_REPLIES = False
+    WORDED_REPLIES = True
 
 # Make sure there's enough replies for each account
 if (len(USERNAMES) > len(replies) and WORDED_REPLIES):
     print(f'Not enough replies for all Twitter accounts, disabling replies \n{datetime.datetime.now()}\n')
-    WORDED_REPLIES = False
+    WORDED_REPLIES = True
 
 # Get check interval, defaulting to 15 minutes
 CHECK_INTERVAL_SECONDS = float(os.environ.get("CHECK_INTERVAL_SECONDS", "900"))
@@ -100,7 +100,7 @@ else:
 
 # Validation
 # Make sure the number of bearer/consumer/acess tokens (twitter accounts), usernames, and cashtags match
-if len(BEARER_TOKENS) != len(CASHTAGS) != len(CONSUMER_KEYS) != len(CONSUMER_SECRETS) != len(ACCESS_TOKENS) != len(ACCESS_TOKEN_SECRETS) != len(USERNAMES) != len(CASHTAGS):
+if len(BEARER_TOKENS) != len($Parzobul, $UncleThoth) != len(CONSUMER_KEYS) != len(CONSUMER_SECRETS) != len(ACCESS_TOKENS) != len(ACCESS_TOKEN_SECRETS) != len(USERNAMES) != len($Parzobul, $UncleThoth):
     raise Exception("The number of usernames and cashtags must match the number of Twitter accounts")
 
 # Remove whitespaces from API tokens and keys, and $/@ from cashtags and usernames
